@@ -9,6 +9,7 @@ const db = require('./data/database')
 const addCsrfTokenMiddleware = require('./middlewares/csrf-token')
 const errorHandlerMiddleware = require('./middlewares/error-handler')
 const checkAuthStatusMiddleware = require('./middlewares/check-auth')
+const protectRoutesMiddleware = require('./middlewares/protect-routes')
 const authRoutes = require('./routes/auth.routes')
 const productRoutes = require('./routes/products.routes')
 const baseRoutes = require('./routes/base.routes')
@@ -37,6 +38,7 @@ app.use(addCsrfTokenMiddleware)//just makes the token available for views using 
 app.use(baseRoutes)
 app.use(authRoutes)
 app.use(productRoutes)
+app.use(protectRoutesMiddleware);//makes sure that protected routes can only be accessed by authenticated and authorized users
 app.use('/admin', adminRoutes) //only path that start with /admin will make it to the admin routes. so we don't have to add /admin to every admin routes
 
 app.use(errorHandlerMiddleware)
