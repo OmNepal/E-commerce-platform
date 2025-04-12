@@ -37,6 +37,7 @@ app.use(csrf())//checks for tokens, generate tokens when csrfToken module is cal
 app.use(cartMiddleware)
 
 app.use(addCsrfTokenMiddleware)//just makes the token available for views using res.locals
+
 app.use(checkAuthStatusMiddleware)
 
 app.use(baseRoutes)
