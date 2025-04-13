@@ -21,7 +21,15 @@
         </span>
       </p>
 
-      <button class="btn">Buy Products</button>
+      <% if (locals.isAuth) {%>
+        <form action="/orders" method="post">
+          <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+          <button class="btn">Buy Products</button>
+        </form>
+      
+      <% } else { %>
+        <p id="cart-total-fallback">Log in to purchase the items</p>
+        <% } %>
     </div>
   </main>
   
