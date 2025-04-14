@@ -8,5 +8,9 @@ router.post('/', ordersController.addOrder) // /orders/
 
 router.get('/', ordersController.getOrders)
 
+router.get('/success', ordersController.success)
+
+router.get('/failure', ordersController.failure)
+
 
 module.exports = router
